@@ -91,6 +91,22 @@ class AppointmentController {
         .json({ error: 'Appointment date is not available' });
     }
 
+    /**
+     * Check if provider and user are the same
+     */
+
+    const checkIsUserEqualProvider = provider_id === req.userId;
+
+    if (checkIsUserEqualProvider) {
+      return res
+        .status(401)
+        .json({ error: 'You can not create an appointment with yourself' });
+    }
+
+    /**
+     * create the appointment
+     */
+
     const appointment = await Appointment.create({
       user_id: req.userId,
       provider_id,
