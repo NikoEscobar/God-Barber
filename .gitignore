@@ -1,5 +1,5 @@
 #dependecies
 /node_modules
 
-#misc
-/auths
+#env vars
+.env
