@@ -17,6 +17,10 @@ import authMiddleware from './app/middlewares/auth';
 const routes = new Router();
 const upload = multer(multerConfig);
 
+routes.post('/debug-sentry', function mainHandler(req, res) {
+  throw new Error(req.body.message || 'My first Sentry error!');
+});
+
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
